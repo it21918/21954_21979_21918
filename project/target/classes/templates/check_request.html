@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Check Request</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container my-2">
+
+    <table border="1" class = "table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>Lesson name</th>
+            <th>Lesson grade</th>
+            <th>Lesson semester</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="l : ${lessons}">
+            <td th:text="${l.name}"></td>
+            <td th:text="${l.grade}"></td>
+            <td th:text="${l.semester}"></td>
+        </tr>
+
+        </tbody>
+
+    </table>
+
+    <a>Do you want to accept this student's request ?</a>
+    <div>
+        <a th:href="@{/teacher/acceptRequest}" th:object="${request}" class="btn btn-primary">Accept</a>
+        <a th:href="@{/teacher/rejectRequest}" th:object="${request}" class="btn btn-danger">Reject</a>
+    </div>
+</div>
+<a th:href = "@{/teacher/home}"> Back to request List</a>
+</body>
+</html>

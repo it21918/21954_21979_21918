@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body>
+<div class="container my-2">
+    <h1>Recommmendation letter</h1>
+    <table border="1" class="table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>Timestamp</th>
+            <th>Request id</th>
+            <th>Sender</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:object="${letter}">
+            <td th:text="${letter.requests.timestamp}"></td>
+            <td th:text="${letter.requests.id}"></td>
+            <td th:text="${letter.requests.receiver.username}"></td>
+            <td th:text="${letter.requests.status}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <br>
+
+    <table>
+    <thead>
+    <th>Response</th>
+    </thead>
+    <tbody>
+    <tr th:object="${letter}">
+        <td th:text="${letter.text}"></td>
+    </tr>
+    </tbody>
+    </table>
+    <a th:href="@{/student/download/{id}(id=${letter.getId()})}">Download</a>
+</div>
+<div>
+    <a th:href="@{/student/viewLetters}"> Go back</a>
+</div>
+</body>
+</html>

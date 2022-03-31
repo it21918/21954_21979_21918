@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body>
+<div class="container my-2">
+    <h1>Recommmendation letters list</h1>
+    <table border="1" class = "table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>Timestamp</th>
+            <th>Request id</th>
+            <th>Sender</th>
+            <th>Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="l : ${letterList}">
+            <td th:text="${l.requests.timestamp}"></td>
+            <td th:text="${l.requests.id}"></td>
+            <td th:text="${l.requests.receiver.username}"></td>
+            <td th:text="${l.requests.status}"></td>
+            <td> <a th:href="@{/student/viewMore/{id}(id=${l.getId()})}" class="btn btn-primary">View more</a>
+        </tr>
+
+        </tbody>
+
+    </table>
+</div>
+<div>
+    <a th:href = "@{/student/home}"> Go back</a>
+</div>
+</body>
+</html>

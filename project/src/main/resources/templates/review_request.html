@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="#" th:action="@{/student/reviewRequest}" th:object="${request}" method="post">
+
+
+
+    <td>Receiver:</td>
+    <td th:text="*{request.receiver}"></td>
+    <td>Purpose</td>
+    <td th:text="*{request.purpose}">purpose</td>
+    <input type="hidden" th:field="*{request.id}" />
+    <input type="hidden" th:field="*{request.sender}" />
+    <input type="hidden" th:field="*{request.status}" th:value="Ready to be reviewed" />
+
+
+
+</tr>
+</form>
+</body>
+</html>

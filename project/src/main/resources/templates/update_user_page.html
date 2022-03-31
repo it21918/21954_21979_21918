@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body>
+<div align="center">
+
+    <div class="container my-2">
+    <h1>User List</h1>
+        <a th:href = "@{/add_user_page}" class="btn btn-primary btn-sm mb-3">Add user</a>
+
+        <table border="1" class = "table table-striped table-responsive-md">
+        <thead>
+            <tr>
+                <th>User username</th>
+            </tr>
+        </thead>
+        <tbody>
+             <tr th:each="User : ${listUsers}">
+                 <td th:text="${User.getUsername()}"></td>
+             </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+</body>
+</html>

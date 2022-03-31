@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+    <title>Title</title>
+</head>
+<body>
+<div class="container my-2">
+    <h1>Request List</h1>
+    <table border="1" class = "table table-striped table-responsive-md">
+        <thead>
+        <tr>
+            <th>Timestamp</th>
+            <th>Request id</th>
+            <th>Request status</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="r : ${listRequests}">
+            <td th:text="${r.timestamp}">Id</td>
+            <td th:text="${r.id}">Id</td>
+            <td th:text="${r.status}">status</td>
+            <td th:text="${r.purpose}">purpose</td>
+        </tr>
+        </tbody>
+
+    </table>
+</div>
+<div>
+<a th:href = "@{/student/home}"> Go back</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
+</head>
+<body>
+<div align="center">
+
+    <form action="#" th:action="@{/student/saveLesson}" th:object="${lesson}" method="post">
+        <table border="1" class="table table-striped table-responsive-md">
+            <thead>
+            <tr>
+                <th> Lesson's grade</th>
+                <th> Lesson's name</th>
+                <th> Lesson's semester</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <td>
+                <input type="text" th:field="*{grade}" required>
+            </td>
+            <td>
+                <input type="text" th:field="*{name}" required>
+            </td>
+            <td>
+                <input type="number" th:field="*{semester}" min="1" max="8" required>
+            </td>
+
+
+
+        </table>
+
+        <td>
+            <input type="hidden" th:field="*{id}">
+        </td>
+
+        <tr th:each="l : ${lessonList}">
+            <td>Lesson name:</td>
+            <td th:text="${l.name}"></td>
+            <br>
+            <td>Lesson semester:</td>
+            <td th:text="${l.semester}"></td>
+            <br>
+            <td>Grade:</td>
+            <td th:text="${l.grade}"></td>
+            <br>
+        </tr>
+        <td>
+            <button type="submit" class="btn btn-primary">Add Lesson</button>
+        </td>
+    </form>
+</div>
+<a th:href="@{/student/home}" class="btn btn-primary"> Go back to menu</a>
+<a th:href="@{/student/sendRequest}"  class="btn btn-danger">Send request</a>
+</div>
+</body>
+</html>
